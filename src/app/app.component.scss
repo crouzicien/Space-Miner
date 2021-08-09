@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+* {
+  font-family: 'Press Start 2P', cursive;
+  box-sizing: border-box;
+}
+
+.fond {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #0d263d;
+}
+
+.totalCredit{
+  position: absolute;
+  top: 10px;
+  left: 500px;
+  width: 700px;
+  padding: 20px;
+  z-index: 9;
+  border: 4px solid rgb(62, 75, 109);
+  border-width:  2px 20px 2px 20px;
+  background: rgba(208, 208, 218, 0.1);
+  color: rgb(211, 211, 211);
+  font-size: larger;
+}
+.ctn-canvas {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 400px;
+  width: 1000px;
+  height: 800px;
+
+  canvas {
+    background: #0d263d;
+    image-rendering: crisp-edges;
+  }
+}
+
+.left-zone {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 10px;
+  width: 380px;
+  background: rgba(208, 208, 218, 0.1);
+
+  .page-ressources {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 4px solid rgb(71, 170, 71);
+    border-width: 20px 2px 20px 2px;
+
+    .titre {
+      text-align: center;
+      height: 200px;
+      line-height: 200px;
+      font-size: 25px;
+      color: rgb(172, 172, 172);
+    }
+
+    .zone-vente {
+      // background: red;
+      // height: 100px;
+      margin-bottom: 50px;
+      .slidecontainer {
+        margin: 0 auto;
+        width: 75%;
+        /* Width of the outside container */
+
+
+        /* The slider itself */
+        .slider {
+          -webkit-appearance: none;
+          /* Override default CSS styles */
+          appearance: none;
+          width: 100%;
+          /* Full-width */
+          height: 25px;
+          /* Specified height */
+          background: rgb(31, 104, 31);
+          
+          /* Grey background */
+          outline: none;
+          /* Remove outline */
+          opacity: 0.7;
+          /* Set transparency (for mouse-over effects on hover) */
+          -webkit-transition: .2s;
+          /* 0.2 seconds transition on hover */
+          transition: opacity .2s;
+        }
+
+        /* Mouse-over effects */
+        .slider:hover {
+          opacity: 1;
+          /* Fully shown on mouse-over */
+        }
+
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        .slider::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          /* Override default look */
+          appearance: none;
+          width: 25px;
+          /* Set a specific slider handle width */
+          height: 50px;
+          /* Slider handle height */
+          background: #4CAF50;
+          /* Green background */
+          cursor: pointer;
+          /* Cursor on hover */
+        }
+
+        .slider::-moz-range-thumb {
+          width: 25px;
+          /* Set a specific slider handle width */
+          height: 25px;
+          /* Slider handle height */
+          background: #4CAF50;
+          /* Green background */
+          cursor: pointer;
+          /* Cursor on hover */
+        }
+      }
+      .qte{
+        text-align: center;
+        width: 100%;
+        color: rgb(71, 170, 71);
+        margin-bottom: 20px;
+        font-size: larger;
+      }
+      .total{
+        display: block;
+        // margin: 30px auto;
+        margin-top: 30px;
+        margin-left: 30px;
+        width: 50%;
+        position: relative;
+        height: 50px;
+        background: rgb(172, 172, 172);
+        float: left;
+      }
+      .auto{
+        display: block;
+        margin: 40px auto 0px auto;
+        width: 20%;
+        position: relative;
+        height: 30px;
+        background: rgb(47, 117, 51);
+        color: rgb(235, 235, 235);
+      }
+    }
+
+    .ressource {
+      width: 100%;
+      height: 40px;
+      background: rgb(53, 126, 53);
+      color: rgb(236, 236, 236);
+      line-height: 40px;
+      padding: 0 20px;
+      margin: 2px 0;
+      cursor: pointer;
+
+      .type {
+        float: left;
+        width: 40%;
+        text-transform: capitalize;
+      }
+
+      .qte {
+        float: left;
+        width: 30%;
+        text-align: center;
+      }
+
+      .price {
+        float: left;
+        width: 30%;
+        text-align: center;
+      }
+    }
+
+    .ressource:hover {
+      filter: brightness(120%);
+    }
+
+    .ressource-selected {
+      background: rgb(170, 162, 44);
+    }
+
+  }
+}
+
+.right-zone {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  width: 380px;
+  background: rgba(208, 208, 218, 0.1);
+
+  .page-planete {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 4px solid orange;
+    border-width: 20px 2px 20px 2px;
+    animation-duration: 0.3s;
+    .titre {
+      text-align: center;
+      height: 100px;
+      line-height: 100px;
+      font-size: 25px;
+      color: rgb(172, 172, 172);
+    }
+
+    .img {
+      margin: 0 auto;
+      display: block;
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    .ressourcesInfos {
+      padding: 0 10px;
+      width: 100%;
+      font-size: 10px;
+      margin: 60px 0;
+
+      .ressource {
+        width: 100%;
+        height: 30px;
+
+        .titreCol {
+          font-size: larger;
+          color: rgb(248, 198, 104) !important;
+        }
+
+        .case {
+          float: left;
+
+          color: orange;
+        }
+
+        .type {
+          width: 30%;
+
+        }
+
+        .percent {
+          width: 24%;
+          // text-align: center;
+        }
+
+        .rate {
+          width: 30%;
+        }
+
+        .mined {
+          width: 10%;
+        }
+      }
+    }
+
+    .vignette {
+      background: rgb(172, 117, 15);
+      font-size: 12px;
+      height: 70px;
+      margin: 5px 0;
+
+      .infos {
+        float: left;
+        width: 65%;
+        padding-left: 20px;
+        padding-top: 10px;
+
+        .titreInfos {
+          color: rgb(228, 228, 228);
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+      }
+
+      button {
+        float: left;
+        width: 30%;
+        position: relative;
+        top: 10px;
+        height: 50px;
+        background: rgb(172, 172, 172);
+        filter: brightness(40%);
+      }
+      .canUpdate{
+        
+        filter: brightness(100%);
+      }
+    }
+  }
+}
+
+
+.nav-bar {
+  margin-left: 390px;
+  position: absolute;
+  top: 820px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  // background: red;
+  display: flex;
+  justify-content: flex-start;
+
+  .menu {
+    background: rgba(208, 208, 218, 0.1);
+    border-left: 1px solid rgba(128, 128, 128, 0.18);
+    box-sizing: border-box;
+    width: 300px;
+    height: 100%;
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  .ressources {
+    background: orange;
+    border: 2px solid rgb(180, 114, 39);
+  }
+}

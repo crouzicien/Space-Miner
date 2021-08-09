@@ -1,0 +1,92 @@
+<div class="fond">
+    <div class="totalCredit">
+        Credit : {{joueurService.credit.toFixed(2)}} $
+    </div>
+    <div class="ctn-canvas" (click)="click_canvas($event)">
+        <canvas id="canvas" width="1000" height="800"></canvas>
+    </div>
+    <div class="left-zone">
+        <div class="page-ressources">
+            <div class="titre">Ressources</div>
+            <div class="zone-vente">
+                <div class="qte">{{joueurService.vente.getQte()}}</div>
+                <div class="slidecontainer">
+                    <input #ramSelector type="range" min="1" max="100" value="100" class="slider"
+                        [(ngModel)]="joueurService.vente.percent">
+                </div>
+                <button class="total" (click)="joueurService.vente.sellCurrent()" *ngIf="!joueurService.currentRessource.autoSell"> Vendre <br><br>{{joueurService.vente.getTotal()}} $</button>
+                <button class="auto" (click)="joueurService.vente.triggerAuto()"> Auto </button>
+            </div>
+            <div class="ressource" *ngFor="let ressource of joueurService.ressources"
+                (click)="joueurService.selectRessource(ressource)"
+                [ngClass]="{'ressource-selected': ressource.selected}">
+                <div class="type">{{ressource.type}}</div>
+                <div class="qte" *ngIf="ressource.autoSell">Auto</div>
+                <div class="qte" *ngIf="!ressource.autoSell">{{ressource.qte}}</div>
+                <div class="price">{{ressource.price}}$</div>
+            </div>
+        </div>
+    </div>
+    <div class="nav-bar">
+        <div class="menu ressources">Ressources</div>
+        <div class="menu">Craft</div>
+        <div class="menu">Amélioration</div>
+    </div>
+    <div class="right-zone">
+        <div class="page-planete fadeIn" *ngIf="planeteService.current != null">
+            <div class="titre">{{planeteService.current.name}}</div>
+            <img src="assets/Planets/{{planeteService.current.name}}.png" class="img">
+
+            <div class="ressourcesInfos">
+                <div class="ressource">
+                    <div class="case type titreCol">Ress</div>
+                    <div class="case percent titreCol">Yield</div>
+                    <div class="case rate titreCol">Rate</div>
+                    <div class="case mined titreCol">Mined</div>
+                </div>
+                <div class="ressource" *ngFor="let item of planeteService.current.ressources">
+                    <div class="case type">{{item.type}}</div>
+                    <div class="case percent">{{item.percent}}%</div>
+                    <div class="case rate">
+                        {{(planeteService.current.levels.mineRate.value*item.percent)/100 | nombre}}/sec</div>
+                    <div class="case mined">{{item.mined}}</div>
+                </div>
+            </div>
+
+            <div class="vignette">
+                <div class="infos">
+                    <div class="titreInfos">Mining rate</div>
+                    Lv. {{planeteService.current.levels.mineRate.level}} <br>
+                    {{planeteService.current.mineRateGlobal() | nombre}} / sec
+                </div>
+                <button (click)="planeteService.current.levels.mineRate.update()"
+                    [ngClass]="{'canUpdate': joueurService.credit >= planeteService.current.levels.mineRate.price()}">
+                    Upgrade <br><br> {{planeteService.current.levels.mineRate.price()}}$
+                </button>
+            </div>
+            <div class="vignette">
+                <div class="infos">
+                    <div class="titreInfos">Ship speed</div>
+                    Lv. {{planeteService.current.levels.speedShip.level}} <br>
+                    {{planeteService.current.levels.speedShip.value}} km/h
+                </div>
+                <button (click)="planeteService.current.levels.speedShip.update()"
+                    [ngClass]="{'canUpdate': joueurService.credit >= planeteService.current.levels.speedShip.price()}">
+                    Upgrade <br><br> {{planeteService.current.levels.speedShip.price()}}$ </button>
+            </div>
+            <div class="vignette">
+                <div class="infos">
+                    <div class="titreInfos">Cargo</div>
+                    Lv. {{planeteService.current.levels.cargo.level}} <br>
+                    {{planeteService.current.levels.cargo.value}}
+                </div>
+                <button (click)="planeteService.current.levels.cargo.update()"
+                    [ngClass]="{'canUpdate': joueurService.credit >= planeteService.current.levels.cargo.price()}">
+                    Upgrade <br><br> {{planeteService.current.levels.cargo.price()}}$ </button>
+            </div>
+
+            <div class="shipSpeed"></div>
+            <div class="shipQte"></div>
+        </div>
+    </div>
+</div>
